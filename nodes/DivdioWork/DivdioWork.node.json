@@ -1,0 +1,10 @@
+{
+  "node": "@divdio/n8n-nodes-divdio-work.divdioWork",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Productivity", "Development"],
+  "resources": {
+    "credentialDocumentation": [{ "url": "https://divdio.com/help/work/api-tokens" }],
+    "primaryDocumentation": [{ "url": "https://divdio.com/help/work/n8n" }]
+  }
+}

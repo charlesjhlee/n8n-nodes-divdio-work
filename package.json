@@ -1,0 +1,63 @@
+{
+  "name": "@divdio/n8n-nodes-divdio-work",
+  "version": "0.1.0",
+  "description": "n8n nodes for divdio Work: a trigger from Work webhooks and actions through the Work REST API, generated from Work's OpenAPI",
+  "license": "MIT",
+  "homepage": "https://divdio.com/help/work/n8n",
+  "author": {
+    "name": "divdio",
+    "email": "support@divdio.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlesjhlee/n8n-nodes-divdio-work.git"
+  },
+  "bugs": {
+    "url": "https://github.com/charlesjhlee/n8n-nodes-divdio-work/issues",
+    "email": "support@divdio.com"
+  },
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "divdio",
+    "divdio work",
+    "project management",
+    "agents"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/DivdioWorkApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/DivdioWork/DivdioWork.node.js",
+      "dist/nodes/DivdioWork/DivdioWorkTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.23.0",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "release-it": "^19.0.4",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

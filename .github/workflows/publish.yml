@@ -1,0 +1,31 @@
+# Publishes the package to npm with a provenance statement when a release tag is pushed (n8n requires this for
+# verified community nodes from 1 May 2026). It lives at the root of the public mirror repository
+# (github.com/charlesjhlee/n8n-nodes-divdio-work). npm Trusted Publishing: no npm token is stored anywhere.
+name: Publish
+
+on:
+  push:
+    tags: ['*.*.*']
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@latest
+      - run: npm install --no-audit --no-fund
+      - run: npm run lint
+      - run: npm run build
+      - run: npm publish --provenance --access public
+        env:
+          # Empty unless the repository has an NPM_TOKEN secret (only for a first publish, before npm lets the
+          # package name have a Trusted Publisher); otherwise npm signs in through GitHub's OIDC token.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
