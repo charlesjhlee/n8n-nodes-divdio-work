@@ -8,7 +8,7 @@ import type {
   INodeType,
   INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+import { ApplicationError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 import { OPERATIONS, PROPERTIES } from './generated/operations';
 import type { OperationMeta } from './generated/operations';
 import { CREDENTIAL, workRequest } from './transport';
@@ -30,7 +30,7 @@ export function bodyOf(meta: OperationMeta, required: IDataObject, additional: I
   const { json, ...rest } = additional;
   if (json !== undefined && json !== '' && json !== '{}') {
     const parsed = typeof json === 'string' ? JSON.parse(json) : json;
-    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('More Fields (JSON) must be a JSON object');
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new ApplicationError('More Fields (JSON) must be a JSON object');
     Object.assign(body, parsed);
   }
   for (const [k, v] of Object.entries({ ...rest, ...required })) {

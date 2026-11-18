@@ -30,6 +30,7 @@ interface HookState {
   webhookSecret?: string;
 }
 
+// eslint-disable-next-line @n8n/community-nodes/node-usable-as-tool -- a trigger can't be an AI tool, and the type allows only true
 export class DivdioWorkTrigger implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'divdio Work Trigger',

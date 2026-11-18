@@ -4,6 +4,7 @@ import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INo
 export class DivdioWorkApi implements ICredentialType {
   name = 'divdioWorkApi';
 
+  // eslint-disable-next-line n8n-nodes-base/cred-class-field-display-name-miscased -- the brand is written in lowercase: divdio
   displayName = 'divdio Work API';
 
   icon = 'file:../nodes/DivdioWork/divdioWork.svg' as const;

@@ -30,7 +30,7 @@ export interface CallOptions {
 }
 
 /** One /v1 call with the credential's token. A refusal ({ error: { status, code, message } }) becomes a NodeApiError. */
-export async function workRequest(ctx: Ctx, method: IHttpRequestMethods, path: string, opts: CallOptions = {}): Promise<any> {
+export async function workRequest(ctx: Ctx, method: IHttpRequestMethods, path: string, opts: CallOptions = {}): Promise<unknown> {
   const request: IHttpRequestOptions = {
     method,
     url: `${await baseUrl(ctx)}${path}`,
