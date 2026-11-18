@@ -26,6 +26,8 @@ jobs:
       - run: npm run build
       - run: npm publish --provenance --access public
         env:
+          # n8n-node's prepublishOnly guard (n8n-node prerelease) refuses a publish unless RELEASE_MODE is set.
+          RELEASE_MODE: 'true'
           # Empty unless the repository has an NPM_TOKEN secret (only for a first publish, before npm lets the
           # package name have a Trusted Publisher); otherwise npm signs in through GitHub's OIDC token.
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
